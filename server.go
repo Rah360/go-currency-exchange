@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"currency-exchange-app/storage"
+	"log"
 	"net/http"
 	"sync"
 
@@ -78,16 +79,19 @@ func (manager *ServerManager) sendToAll(message []byte) {
 func (manager *ServerManager) UpdateAndBroadcastRates(currency string, rate string) {
 	err := manager.Storage.Update(currency, rate)
 	if err != nil {
+		log.Printf("Failed to update rate for %s: %v", currency, err)
 		return
 	}
 
 	rates, err := manager.Storage.Get()
 	if err != nil {
+		log.Printf("Failed to Get rate for %s: %v", currency, err)
 		return
 	}
 
 	err = manager.Storage.Publish(rates)
 	if err != nil {
+		log.Printf("Failed to publish rate for %s: %v", currency, err)
 		return
 	}
 }
