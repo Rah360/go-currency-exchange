@@ -9,7 +9,7 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
-var jwtKey = []byte("your_secret_key") // This should be stored securely
+var jwtKey = []byte("test_key") // This should be stored securely
 
 type Claims struct {
 	Username string `json:"username"`
