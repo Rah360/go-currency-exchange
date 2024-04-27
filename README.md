@@ -10,6 +10,8 @@ real-time currency exchange rate updates using Golang, WebSocket, and Redis
 - Separate roles for admin and clients.
 
 ## Prerequisites
+- Golang 1.15+
+- Redis server running on localhost (default port 6379)
 
 ## Installation
 
