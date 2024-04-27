@@ -16,7 +16,8 @@ real-time currency exchange rate updates using Golang, WebSocket, and Redis
 Clone the repository to your local machine
 
 Configuration
-Ensure your Redis server is up and running. Modify the Redis connection settings in storage.go if your setup differs from the default configuration.
+Ensure your Redis server is up and running.
+currently it usages default configuration for redis
 
 Running the Application
 To run the server, execute:
