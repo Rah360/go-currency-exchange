@@ -78,7 +78,7 @@ func main() {
 		}
 		server.UpdateAndBroadcastRates(updates.Currency, updates.Rate)
 		defer r.Body.Close()
-
+		w.WriteHeader(http.StatusOK)
 	}).ServeHTTP)
 
 	log.Fatal(http.ListenAndServe(":3000", nil))
