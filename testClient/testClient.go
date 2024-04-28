@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 
 	"nhooyr.io/websocket"
@@ -13,6 +14,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Error connecting to WebSocket:", err)
 	}
+	fmt.Println("connected to the server")
 	defer ws.Close(websocket.StatusNormalClosure, "")
 
 	err = ws.Write(ctx, websocket.MessageText, []byte("Hello Server!"))
@@ -26,6 +28,6 @@ func main() {
 			log.Println("Error reading message:", err)
 			break
 		}
-		log.Printf("Received Updated Currency Rates: %s", msg)
+		log.Printf("Received New Updated Currency Rates: %s", msg)
 	}
 }

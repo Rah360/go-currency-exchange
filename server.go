@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"currency-exchange-app/storage"
+	"fmt"
 	"log"
 	"net/http"
 	"sync"
@@ -39,10 +40,12 @@ func (manager *ServerManager) run() {
 		select {
 		case client := <-manager.Register:
 			manager.Clients[client.Id] = client
+			fmt.Println("new client connected", client.Id)
 		case client := <-manager.Unregister:
 			_, ok := manager.Clients[client.Id]
 			if ok {
 				delete(manager.Clients, client.Id)
+				fmt.Println("client disconnected", client.Id)
 			}
 		}
 	}
